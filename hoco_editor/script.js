@@ -19,8 +19,11 @@ function setupEventListeners() {
     uploadArea.addEventListener('dragleave', handleDragLeave);
     uploadArea.addEventListener('drop', handleDrop);
     
-    // Click to upload
-    uploadArea.addEventListener('click', () => fileInput.click());
+    // Click to upload - prevent double triggering
+    uploadArea.addEventListener('click', (e) => {
+        e.preventDefault();
+        fileInput.click();
+    });
 }
 
 function handleDragOver(e) {
@@ -50,7 +53,11 @@ function handleDrop(e) {
 
 function handleFileSelect(e) {
     const files = Array.from(e.target.files);
-    addFiles(files);
+    if (files.length > 0) {
+        addFiles(files);
+    }
+    // Clear the input so the same file can be selected again if needed
+    e.target.value = '';
 }
 
 function addFiles(files) {
