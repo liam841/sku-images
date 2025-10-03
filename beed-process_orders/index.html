@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Process Orders - Linnworks vs Shopify</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Process Orders - Linnworks vs Shopify</h1>
+            <p>Compare CSVs to find Linnworks orders not in Shopify unfulfilled list</p>
+        </header>
+
+        <div class="controls-section">
+            <div class="upload-controls">
+                <button id="uploadLinnworks" class="upload-btn">Upload Linnworks CSV</button>
+                <button id="uploadShopify" class="upload-btn">Upload Shopify CSV</button>
+            </div>
+            
+            <div class="file-labels">
+                <div id="linnFileLabel" class="file-label">Linnworks: (no file)</div>
+                <div id="shopFileLabel" class="file-label">Shopify: (no file)</div>
+            </div>
+
+            <div class="column-selection">
+                <div class="column-group">
+                    <label for="linnworksColumn">Linnworks Match Column:</label>
+                    <select id="linnworksColumn" disabled>
+                        <option value="">Select column...</option>
+                    </select>
+                </div>
+                
+                <div class="column-group">
+                    <label for="shopifyColumn">Shopify Match Column:</label>
+                    <select id="shopifyColumn" disabled>
+                        <option value="">Select column...</option>
+                    </select>
+                </div>
+                
+                <button id="validateColumns" class="action-btn">Select Matching Column</button>
+            </div>
+
+            <div class="options-section">
+                <div class="match-options">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="caseInsensitive" checked>
+                        Case-insensitive
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="normalizeSpaces" checked>
+                        Normalize spaces
+                    </label>
+                </div>
+                
+                <div class="action-buttons">
+                    <button id="processBtn" class="action-btn primary" disabled>Process</button>
+                    <button id="exportBtn" class="action-btn" disabled>Export CSV</button>
+                    <button id="clearBtn" class="action-btn">Clear</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="previews-section">
+            <div class="preview-panel">
+                <h3>Linnworks Preview (first 10 rows)</h3>
+                <div class="table-container">
+                    <table id="linnTable">
+                        <thead></thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="preview-panel">
+                <h3>Output Preview (first 10 rows)</h3>
+                <div class="table-container">
+                    <table id="outputTable">
+                        <thead></thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="preview-panel">
+                <h3>Shopify Preview (first 10 rows)</h3>
+                <div class="table-container">
+                    <table id="shopTable">
+                        <thead></thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="status-bar">
+            <span id="statusText">Ready</span>
+        </div>
+
+        <!-- Hidden file inputs -->
+        <input type="file" id="linnworksInput" accept=".csv" style="display: none;">
+        <input type="file" id="shopifyInput" accept=".csv" style="display: none;">
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
