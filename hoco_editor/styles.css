@@ -1,0 +1,366 @@
+/* Modern CSS Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* CSS Variables for consistent theming */
+:root {
+    --primary-color: #007AFF;
+    --secondary-color: #5856D6;
+    --success-color: #34C759;
+    --background-color: #F2F2F7;
+    --surface-color: #FFFFFF;
+    --text-color: #000000;
+    --text-light: #8E8E93;
+    --border-color: #C6C6C8;
+    --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    --border-radius: 12px;
+    --spacing: 20px;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: var(--spacing);
+}
+
+/* Header */
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 40px 0;
+}
+
+.title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    font-weight: 400;
+}
+
+/* Cards */
+.card {
+    background: var(--surface-color);
+    border-radius: var(--border-radius);
+    padding: 30px;
+    margin-bottom: var(--spacing);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+}
+
+.section-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: var(--text-color);
+}
+
+/* Upload Area */
+.upload-area {
+    border: 2px dashed var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 40px;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    background: var(--background-color);
+}
+
+.upload-area:hover,
+.upload-area.dragover {
+    border-color: var(--primary-color);
+    background-color: rgba(0, 122, 255, 0.05);
+}
+
+.upload-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.upload-icon {
+    font-size: 3rem;
+    opacity: 0.7;
+}
+
+.upload-text {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    margin: 0;
+}
+
+/* Buttons */
+.primary-button,
+.secondary-button,
+.upload-button {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.primary-button {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    box-shadow: 0 4px 15px rgba(0, 122, 255, 0.3);
+}
+
+.primary-button:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 122, 255, 0.4);
+}
+
+.primary-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.secondary-button {
+    background: var(--surface-color);
+    color: var(--text-color);
+    border: 2px solid var(--border-color);
+}
+
+.secondary-button:hover {
+    background: var(--background-color);
+    border-color: var(--text-light);
+}
+
+.upload-button {
+    background: var(--primary-color);
+    color: white;
+    padding: 12px 25px;
+    font-size: 0.9rem;
+}
+
+.upload-button:hover {
+    background: var(--secondary-color);
+}
+
+/* File List */
+.file-list {
+    margin-top: 20px;
+    padding: 20px;
+    background: var(--background-color);
+    border-radius: var(--border-radius);
+}
+
+.file-list h3 {
+    margin-bottom: 15px;
+    color: var(--text-color);
+}
+
+.file-list ul {
+    list-style: none;
+    margin-bottom: 15px;
+}
+
+.file-list li {
+    padding: 10px;
+    background: var(--surface-color);
+    margin-bottom: 8px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.file-list li:last-child {
+    margin-bottom: 0;
+}
+
+.remove-file {
+    background: var(--accent-color, #FF3B30);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+.remove-file:hover {
+    opacity: 0.8;
+}
+
+/* Progress Bar */
+.progress-section {
+    margin-bottom: 20px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: var(--border-color);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color), var(--success-color));
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+.progress-text {
+    text-align: center;
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+/* Results */
+.results {
+    margin-top: 20px;
+    padding: 20px;
+    background: rgba(52, 199, 89, 0.1);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--success-color);
+}
+
+.results h3 {
+    color: var(--success-color);
+    margin-bottom: 10px;
+}
+
+.download-section {
+    margin-top: 15px;
+}
+
+.download-button {
+    background: var(--success-color);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.download-button:hover {
+    opacity: 0.9;
+}
+
+/* Instructions */
+.instructions {
+    margin-bottom: 30px;
+}
+
+.instruction-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    padding: 15px;
+    background: var(--background-color);
+    border-radius: 8px;
+}
+
+.instruction-number {
+    background: var(--primary-color);
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+.transformations {
+    background: var(--background-color);
+    padding: 20px;
+    border-radius: var(--border-radius);
+}
+
+.transformations h3 {
+    margin-bottom: 15px;
+    color: var(--text-color);
+}
+
+.transformations ul {
+    list-style: none;
+}
+
+.transformations li {
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.transformations li:last-child {
+    border-bottom: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
+    .title {
+        font-size: 2rem;
+    }
+    
+    .card {
+        padding: 20px;
+    }
+    
+    .upload-area {
+        padding: 30px 20px;
+    }
+    
+    .primary-button,
+    .secondary-button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+/* Loading Animation */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid var(--border-color);
+    border-radius: 50%;
+    border-top-color: var(--primary-color);
+    animation: spin 1s ease-in-out infinite;
+    margin-right: 10px;
+}
