@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Supplier Product Scraper</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="app-header">
+        <h1>Supplier Product Scraper</h1>
+        <nav class="header-actions">
+            <button id="btn-new" class="btn">New Session</button>
+            <button id="btn-save" class="btn">Save Session</button>
+            <input type="file" id="file-load-session" accept="application/json" hidden>
+            <button id="btn-load" class="btn btn-secondary">Load Session</button>
+            <a id="gh-help" href="https://github.com/" target="_blank" rel="noreferrer" class="link">Help</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="panel">
+            <h2>1) Import Suppliers CSV</h2>
+            <div class="row">
+                <input type="file" id="file-csv" accept=".csv" />
+                <button id="btn-download-template" class="btn btn-secondary">Download Template</button>
+            </div>
+            <p class="hint">Template columns: SKU,URL</p>
+            <div id="csv-status" class="status"></div>
+        </section>
+
+        <section class="panel">
+            <h2>2) Select Supplier</h2>
+            <div class="row">
+                <label for="supplier-select">Active supplier</label>
+                <select id="supplier-select" class="btn"></select>
+            </div>
+            <div class="row">
+                <label for="proxy-template">CORS proxy (optional)</label>
+                <input id="proxy-template" class="btn" style="min-width:360px" placeholder="e.g. https://api.allorigins.win/raw?url={url}" />
+            </div>
+            <p class="hint">If direct fetch fails (CORS), provide a proxy. Use {url} placeholder or the app will append the encoded URL.</p>
+            <p class="hint">This supplier will be used to parse all rows. All rows will be fetched automatically.</p>
+        </section>
+
+        
+
+        <section class="panel">
+            <h2>4) Parse and Export</h2>
+            <div class="row">
+                <button id="btn-parse" class="btn">Parse All</button>
+                <button id="btn-download" class="btn btn-primary" disabled>Download CSV</button>
+            </div>
+            <div id="parse-status" class="status"></div>
+        </section>
+
+        <section class="panel">
+            <h2>Results Preview</h2>
+            <div id="results-wrapper">
+                <table id="results-table">
+                    <thead>
+                        <tr>
+                            <th>SKU</th>
+                            <th>Supplier</th>
+                            <th>URL</th>
+                            <th>Title</th>
+                            <th>Product Code</th>
+                            <th>Price</th>
+                            <th>Description</th>
+                            <th>Stock Level</th>
+                        </tr>
+                    </thead>
+                    <tbody id="results-tbody"></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer class="app-footer">
+        <span>Runs entirely in your browser. Safe for GitHub Pages.</span>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
+
