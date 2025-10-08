@@ -42,6 +42,10 @@
                 <label for="proxy-template">CORS proxy (optional)</label>
                 <input id="proxy-template" class="btn" style="min-width:360px" placeholder="e.g. https://api.allorigins.win/raw?url={url}" />
             </div>
+            <div class="row">
+                <label for="url-prefix">URL prefix (optional)</label>
+                <input id="url-prefix" class="btn" style="min-width:360px" placeholder="e.g. https://www.scooter-center.com/" />
+            </div>
             <p class="hint">If direct fetch fails (CORS), provide a proxy. Use {url} placeholder or the app will append the encoded URL.</p>
             <p class="hint">This supplier will be used to parse all rows. All rows will be fetched automatically.</p>
         </section>
